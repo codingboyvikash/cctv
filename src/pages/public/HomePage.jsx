@@ -62,16 +62,16 @@ const HomePage = () => {
             </Col>
 
             <Col lg={5}>
-              <Card className="glass-effect animate-slideInLeft">
+              <Card className="glass-effect animate-slideInLeft home_icon_wepper">
                 <Card.Body className="p-4">
                   <div className="d-flex align-items-center gap-3 mb-4">
                     <div className="stat-icon">
                       <Shield size={28} />
                     </div>
-                    <h3 className="fw-bold mb-0">24×7 Expert Support</h3>
+                    <h3 className="fw-bold mb-0 text-white">24×7 Expert Support</h3>
                   </div>
                   
-                  <p className="mb-4">
+                  <p className="mb-4 text-white">
                     Fast response times, certified technicians, transparent ticket tracking, 
                     and scalable service operations designed for your business growth.
                   </p>
@@ -79,15 +79,15 @@ const HomePage = () => {
                   <div className="d-flex flex-column gap-3">
                     <div className="d-flex align-items-center gap-3">
                       <CheckCircle className="text-success" size={20} />
-                      <span>On-site and remote support</span>
+                      <span className="text-white">On-site and remote support</span>
                     </div>
                     <div className="d-flex align-items-center gap-3">
                       <CheckCircle className="text-success" size={20} />
-                      <span>Real-time ticket tracking</span>
+                      <span className="text-white">Real-time ticket tracking</span>
                     </div>
                     <div className="d-flex align-items-center gap-3">
                       <CheckCircle className="text-success" size={20} />
-                      <span>Comprehensive AMC plans</span>
+                      <span className="text-white">Comprehensive AMC plans</span>
                     </div>
                   </div>
                 </Card.Body>
