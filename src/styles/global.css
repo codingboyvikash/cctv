@@ -234,6 +234,20 @@ h6 {
   line-height: 1.6;
 }
 
+/* Eyebrow text for hero sections */
+.eyebrow {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Primary light color */
+.text-primary-light {
+  color: var(--bs-primary-light) !important;
+}
+
 /* Premium Stats Section */
 .stats-section {
   background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);

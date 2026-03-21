@@ -52,69 +52,109 @@ const ServicesPage = () => {
 
   return (
     <>
-      {/* Hero Section */}
-      <section className="hero position-relative overflow-hidden" style={{ minHeight: '100vh' }}>
-        <div className="hero-content position-relative z-2">
-          <Container>
-            <Row className="align-items-center justify-content-center" style={{ minHeight: '100vh' }}>
-              <Col lg={6} className="py-5">
-                <div className="animate-slideInLeft">
-                  <Badge bg="light" text="dark" className="mb-3 px-3 py-2 rounded-pill">
-                    <Clock className="me-2" size={16} />
-                    24/7 Emergency Service Available
-                  </Badge>
-                  <h1 className="hero-title text-white mb-4" style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: '800' }}>
-                    Professional IT & CCTV Solutions
-                  </h1>
-                  <p className="hero-subtitle text-white mb-5" style={{ fontSize: '1.25rem', opacity: '0.9', lineHeight: '1.6' }}>
-                    Complete technology solutions for homes, offices, and businesses.
-                    From computer repairs to advanced CCTV surveillance systems.
-                  </p>
-                  <div className="d-flex flex-wrap gap-3">
-                    <Button
-                      size="lg"
-                      className="px-4 py-3"
-                      style={{ background: 'var(--bs-gradient-primary)', border: 'none', borderRadius: '0.75rem' }}
-                      href="tel:+919876543210"
-                    >
-                      <Phone className="me-2" size={20} />
-                      Call Now
-                    </Button>
-                    <Button
-                      size="lg"
-                      variant="outline-light"
-                      className="px-4 py-3"
-                      style={{ borderRadius: '0.75rem', borderWidth: '2px' }}
-                      href="https://wa.me/919876543210"
-                    >
-                      <MessageCircle className="me-2" size={20} />
-                      WhatsApp
-                    </Button>
-                  </div>
+      {/* Hero Section - Matching HomePage Layout */}
+      <section className="hero">
+        <Container className="hero-content">
+          <Row className="align-items-center g-5">
+            <Col lg={7}>
+              <div className="animate-fadeInUp">
+                <div className="d-flex align-items-center gap-2 mb-4">
+                  <Clock className="text-primary-light" size={20} />
+                  <span className="eyebrow">24/7 Emergency Service Available</span>
                 </div>
-              </Col>
-              <Col lg={6} className="py-5">
-                <div className="animate-fadeInUp">
-                  <div className="text-center">
-                    <div className="d-inline-block p-4 rounded-4" style={{ background: 'rgba(255, 255, 255, 0.1)', backdropFilter: 'blur(10px)', border: '1px solid rgba(255, 255, 255, 0.2)' }}>
-                      <Row className="g-3">
-                        {stats.map((stat, index) => (
-                          <Col key={index} xs={6} className="text-center">
-                            <div className="text-white p-3">
-                              <stat.icon className="mb-2 mx-auto" size={32} />
-                              <div className="h3 mb-1 fw-bold">{stat.number}</div>
-                              <div className="small opacity-90">{stat.label}</div>
-                            </div>
-                          </Col>
-                        ))}
-                      </Row>
+
+                <h1 className="hero-title">
+                  Professional IT & CCTV
+                  <span className="gradient-text">Solutions</span>
+                </h1>
+
+                <p className="hero-subtitle">
+                  Complete technology solutions for homes, offices, and businesses.
+                  From computer repairs to advanced CCTV surveillance systems with 24/7 support.
+                </p>
+
+                <div className="d-flex flex-wrap gap-3">
+                  <Button
+                    size="lg"
+                    className="px-4 py-3"
+                    style={{ background: 'var(--bs-gradient-primary)', border: 'none', borderRadius: '0.75rem' }}
+                    href="tel:+919876543210"
+                  >
+                    <Phone className="me-2" size={20} />
+                    Call Now
+                  </Button>
+
+                  <Button
+                    size="lg"
+                    variant="outline-light"
+                    className="px-4 py-3"
+                    style={{ borderRadius: '0.75rem', borderWidth: '2px' }}
+                    href="https://wa.me/919876543210"
+                  >
+                    <MessageCircle className="me-2" size={20} />
+                    WhatsApp
+                  </Button>
+                </div>
+              </div>
+            </Col>
+
+            <Col lg={5}>
+              <div className="animate-slideInLeft">
+                <Card className="glass-effect">
+                  <Card.Body className="p-4">
+                    <div className="d-flex align-items-center gap-3 mb-4">
+                      <div className="stat-icon">
+                        <Shield size={28} />
+                      </div>
+                      <h3 className="fw-bold mb-0 text-white">Trusted by 500+ Clients</h3>
                     </div>
-                  </div>
-                </div>
-              </Col>
-            </Row>
-          </Container>
-        </div>
+
+                    <p className="mb-4 text-white">
+                      Fast response times, certified technicians, transparent service tracking,
+                      and comprehensive AMC plans designed for your business growth.
+                    </p>
+
+                    <div className="d-flex flex-column gap-3">
+                      <div className="d-flex align-items-center gap-3">
+                        <CheckCircle className="text-success" size={20} />
+                        <span className="text-white">10+ Years Experience</span>
+                      </div>
+                      <div className="d-flex align-items-center gap-3">
+                        <CheckCircle className="text-success" size={20} />
+                        <span className="text-white">24/7 Support Available</span>
+                      </div>
+                      <div className="d-flex align-items-center gap-3">
+                        <CheckCircle className="text-success" size={20} />
+                        <span className="text-white">4.9 Average Rating</span>
+                      </div>
+                    </div>
+                  </Card.Body>
+                </Card>
+              </div>
+            </Col>
+          </Row>
+
+          {/* Floating Elements */}
+          <div className="position-absolute animate-float" style={{
+            top: '5rem',
+            right: '2.5rem',
+            width: '5rem',
+            height: '5rem',
+            background: 'rgba(59, 130, 246, 0.2)',
+            borderRadius: '50%',
+            filter: 'blur(1rem)'
+          }} />
+          <div className="position-absolute animate-float" style={{
+            bottom: '5rem',
+            left: '2.5rem',
+            width: '8rem',
+            height: '8rem',
+            background: 'rgba(139, 92, 246, 0.2)',
+            borderRadius: '50%',
+            filter: 'blur(1rem)',
+            animationDelay: '1s'
+          }} />
+        </Container>
       </section>
 
       {/* Services Categories Section */}
@@ -249,8 +289,8 @@ const ServicesPage = () => {
                           variant="outline-primary"
                           className="w-100 d-flex align-items-center justify-content-center gap-2"
                           href="/ticket"
-                          style={{ 
-                            borderRadius: '0.75rem', 
+                          style={{
+                            borderRadius: '0.75rem',
                             padding: '0.75rem 1rem',
                             height: '50px',
                             minHeight: '50px',
@@ -282,16 +322,16 @@ const ServicesPage = () => {
             <Col lg={6}>
               <div className="animate-slideInLeft">
                 <div className="mb-4">
-                  <Badge bg="light" text="dark" className="px-3 py-2 rounded-pill" style={{ 
-                    fontSize: '0.9rem', 
+                  <Badge bg="light" text="dark" className="px-3 py-2 rounded-pill" style={{
+                    fontSize: '0.9rem',
                     fontWeight: '700',
                     letterSpacing: '0.5px'
                   }}>
                     ⭐ Why Choose Us
                   </Badge>
                 </div>
-                
-                <h1 className="display-2 fw-bold mb-4" style={{ 
+
+                <h1 className="display-2 fw-bold mb-4" style={{
                   fontSize: 'clamp(2.2rem, 4.5vw, 3.2rem)',
                   lineHeight: '1.1',
                   color: 'white',
@@ -299,15 +339,15 @@ const ServicesPage = () => {
                 }}>
                   Trusted by 500+ Happy Clients
                 </h1>
-                
-                <p className="lead mb-5" style={{ 
-                  fontSize: '1.2rem', 
+
+                <p className="lead mb-5" style={{
+                  fontSize: '1.2rem',
                   opacity: '0.95',
                   lineHeight: '1.6',
                   maxWidth: '520px',
                   color: 'rgba(255,255,255,0.9)'
                 }}>
-                  We deliver reliable IT and CCTV solutions with 24/7 support, 
+                  We deliver reliable IT and CCTV solutions with 24/7 support,
                   guaranteed quality, and 10+ years of proven excellence.
                 </p>
 
