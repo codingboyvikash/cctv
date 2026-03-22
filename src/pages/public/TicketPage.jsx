@@ -237,7 +237,13 @@ const TicketPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // Validate all fields
+    // Only allow submission on the last step
+    if (currentStep < totalSteps) {
+      setError('Please complete all steps before submitting');
+      return;
+    }
+    
+    // Validate all fields only on final step
     const allErrors = {};
     Object.keys(formData).forEach(key => {
       if (key !== 'attachments' && key !== 'estimatedResolution') {
@@ -260,8 +266,10 @@ const TicketPage = () => {
       const { data } = await submitTicketApi(formData);
       setTicketNumber(data.data.ticketNumber);
       setSuccess(`Ticket submitted successfully. Your ticket number is ${data.data.ticketNumber}.`);
-      setFormData(initialState);
-      setCurrentStep(1);
+      
+      // Don't reset form - let success message stay visible
+      // setFormData(initialState);
+      // setCurrentStep(1);
       setIsDraft(false);
       
       // Trigger confetti animation
@@ -455,6 +463,8 @@ const TicketPage = () => {
             <div className="col-md-8">
               <Card className="shadow-sm">
                 <Card.Body className="p-4">
+              {!ticketNumber ? (
+                <>
               {/* Progress Steps */}
               <div className="d-flex justify-content-between mb-4">
                 {[1, 2, 3, 4].map((step) => (
@@ -539,20 +549,47 @@ const TicketPage = () => {
                     <h4 className="mb-3">Service Details</h4>
                     <div className="mb-3">
                       <label className="form-label">Service Type *</label>
-                      <div className="row">
+                      <div className="row g-3">
                         {serviceTypes.map((service) => {
                           const Icon = service.icon;
                           return (
-                            <div key={service.id} className="col-md-6 mb-2">
+                            <div key={service.id} className="col-md-6">
                               <div
-                                className={`card p-3 cursor-pointer ${formData.serviceType === service.id ? 'border-primary bg-light' : ''}`}
+                                className={`service-card h-100 p-3 border rounded-3 cursor-pointer transition-all ${
+                                  formData.serviceType === service.id 
+                                    ? 'border-primary bg-primary bg-opacity-10 shadow-sm' 
+                                    : 'border-secondary bg-white hover:border-primary hover:shadow-sm'
+                                }`}
                                 onClick={() => handleServiceTypeSelect(service.id)}
+                                style={{
+                                  cursor: 'pointer',
+                                  transition: 'all 0.3s ease',
+                                  transform: formData.serviceType === service.id ? 'scale(1.02)' : 'scale(1)'
+                                }}
                               >
-                                <div className="d-flex align-items-center">
-                                  <Icon size={20} className="me-2" style={{ color: service.color }} />
-                                  <div>
-                                    <h6 className="mb-0">{service.name}</h6>
-                                    <small className="text-muted">{service.description}</small>
+                                <div className="d-flex align-items-start">
+                                  <div className="service-icon-wrapper me-3">
+                                    <div 
+                                      className="d-inline-flex align-items-center justify-content-center rounded-2 p-2"
+                                      style={{ 
+                                        backgroundColor: formData.serviceType === service.id ? service.color : `${service.color}20`,
+                                        color: formData.serviceType === service.id ? 'white' : service.color,
+                                        transition: 'all 0.3s ease'
+                                      }}
+                                    >
+                                      <Icon size={24} />
+                                    </div>
+                                  </div>
+                                  <div className="flex-grow-1">
+                                    <h6 className={`mb-1 fw-semibold ${
+                                      formData.serviceType === service.id ? 'text-primary' : 'text-dark'
+                                    }`}>
+                                      {service.name}
+                                      {formData.serviceType === service.id && (
+                                        <CheckCircle size={16} className="ms-2 text-success" />
+                                      )}
+                                    </h6>
+                                    <small className="text-muted d-block">{service.description}</small>
                                   </div>
                                 </div>
                               </div>
@@ -560,7 +597,12 @@ const TicketPage = () => {
                           );
                         })}
                       </div>
-                      {formErrors.serviceType && <div className="text-danger small">{formErrors.serviceType}</div>}
+                      {formErrors.serviceType && (
+                        <div className="text-danger small mt-2 d-flex align-items-center">
+                          <AlertCircle size={14} className="me-1" />
+                          {formErrors.serviceType}
+                        </div>
+                      )}
                     </div>
                                       </div>
                 )}
@@ -633,14 +675,14 @@ const TicketPage = () => {
                   )}
                 </div>
               </form>
-              
-              {ticketNumber && (
+              </>
+            ) : (
                 <div className="alert alert-success mt-3">
                   <h5>🎉 Ticket Generated Successfully!</h5>
                   <p><strong>Your Ticket Number:</strong> {ticketNumber}</p>
-                  <p>Track your service request here: <Link to="/ticket-status">Check Ticket Status</Link></p>
+                  <p>Track your service request here: <Link to="/ticket-status" className="btn btn-sm btn-primary">Check Ticket Status</Link></p>
                 </div>
-              )}
+            )}
             </Card.Body>
           </Card>
         </div>
