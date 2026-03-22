@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Container } from 'react-bootstrap';
+import { Button, Card, Container, Row, Col, Badge } from 'react-bootstrap';
 import { Ticket, Star, Users, Award, Send, User, Phone, Mail, MapPin, MessageSquare, CheckCircle, Shield, Upload, Clock, AlertCircle, FileText, Camera, Paperclip, X, ChevronRight, ChevronLeft, Zap, HeadphonesIcon, Wrench, Monitor, Printer } from 'lucide-react';
 import Alert from '../../components/Alert';
 import Loader from '../../components/Loader';
@@ -164,7 +164,6 @@ const TicketPage = () => {
       errors.email = validateField('email', formData.email);
     } else if (step === 2) {
       errors.serviceType = validateField('serviceType', formData.serviceType);
-      errors.priority = !formData.priority ? 'Please select a priority level' : '';
     } else if (step === 3) {
       errors.problemDescription = validateField('problemDescription', formData.problemDescription);
     } else if (step === 4) {
@@ -277,594 +276,377 @@ const TicketPage = () => {
 
   return (
     <>
-      {/* Hero Section */}
-      <section className="hero">
-        <div className="hero-overlay"></div>
-        <Container className="position-relative z-2">
-          <div className="hero-content text-center">
-            <div className="hero-icon mb-4">
-              <div className="icon-pulse">
-                <Ticket size={48} className="text-white" />
-              </div>
-            </div>
-            <h1 className="hero-title mb-3">
-              <span className="title-shine">Service Ticket Portal</span>
-            </h1>
-            <p className="hero-subtitle mb-5">Submit your service request and get instant ticket generation</p>
-            
-            {/* Enhanced Trust Indicators */}
-            <div className="trust-indicators mb-5">
-              <div className="trust-item">
-                <div className="trust-icon-wrapper">
-                  <Star className="text-warning" size={20} />
-                </div>
-                <div>
-                  <div className="trust-number">4.9/5</div>
-                  <div className="trust-label">Customer Rating</div>
-                </div>
-              </div>
-              <div className="trust-item">
-                <div className="trust-icon-wrapper">
-                  <Users className="text-primary" size={20} />
-                </div>
-                <div>
-                  <div className="trust-number">10,000+</div>
-                  <div className="trust-label">Happy Customers</div>
-                </div>
-              </div>
-              <div className="trust-item">
-                <div className="trust-icon-wrapper">
-                  <Award className="text-success" size={20} />
-                </div>
-                <div>
-                  <div className="trust-number">24/7</div>
-                  <div className="trust-label">Premium Support</div>
-                </div>
-              </div>
-            </div>
-            
-            {/* Enhanced CTA Button */}
-            <div className="hero-cta mb-4">
-              <Button variant="primary" size="lg" className="btn-hero-enhanced" onClick={() => document.getElementById('ticket-form').scrollIntoView({ behavior: 'smooth' })}>
-                <Send size={20} className="me-2" />
-                <span>Create Ticket Now</span>
-                <div className="btn-glow"></div>
-              </Button>
-            </div>
-          </div>
-        </Container>
+      {/* Premium Hero Section */}
+      <section className="hero position-relative overflow-hidden">
+        <div className="position-absolute top-0 start-0 w-100 h-100" style={{
+          background: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Cdefs%3E%3Cpattern id=\'grid\' width=\'10\' height=\'10\' patternUnits=\'userSpaceOnUse\'%3E%3Cpath d=\'M 10 0 L 0 0 0 10\' fill=\'none\' stroke=\'rgba(255,255,255,0.05)\' stroke-width=\'1\'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width=\'100\' height=\'100\' fill=\'url(%23grid)\'/%3E%3C/svg%3E")',
+          opacity: 0.3
+        }} />
         
-        {/* Animated Background Elements */}
-        <div className="hero-bg-elements">
-          <div className="floating-shape shape-1"></div>
-          <div className="floating-shape shape-2"></div>
-          <div className="floating-shape shape-3"></div>
-        </div>
-      </section>
+        <Container className="hero-content position-relative z-2">
+          <Row className="align-items-center min-vh-100 g-5">
+            <Col lg={6} className="py-5">
+              <div className="animate-fadeInUp">
+                <div className="d-inline-flex align-items-center gap-2 mb-4">
+                  <Badge bg="warning" text="dark" className="px-3 py-2 fw-bold">
+                    <Ticket className="me-2" size={16} />
+                    Instant Support
+                  </Badge>
+                  <Badge bg="success" className="px-3 py-2 fw-bold animate-pulse">
+                    <Shield className="me-2" size={16} />
+                    24/7 Available
+                  </Badge>
+                </div>
+                
+                <div className="mb-4">
+                  <h1 className="display-1 fw-bold mb-3 text-white">
+                    Create Your <span className="text-warning">Support Ticket</span>
+                  </h1>
+                  <p className="lead text-white-50 mb-0">
+                    Submit your service request and get instant ticket generation with real-time tracking.
+                    Fast, reliable, and professional support for all your IT and CCTV needs.
+                  </p>
+                </div>
+                
+                <div className="d-flex flex-wrap gap-3 mb-5">
+                  <Button variant="light" size="lg" className="fw-bold" onClick={() => document.getElementById('ticket-form').scrollIntoView({ behavior: 'smooth' })}>
+                    <Send className="me-2" size={18} />
+                    Create Ticket Now
+                  </Button>
+                  <Button variant="outline-light" size="lg" className="fw-bold" href="/contact">
+                    <Phone className="me-2" size={18} />
+                    Call Support
+                  </Button>
+                </div>
 
-      {/* Multi-Step Ticket Form Section */}
-      <section className="section" id="ticket-form">
-        <div className="container narrow">
-          <div className="ticket-form-wrapper">
-            {/* Premium Form Header */}
-            <div className="form-header-premium text-center mb-5">
-              <div className="form-header-icon-premium mb-4">
-                <Ticket size={64} className="text-white" />
-              </div>
-              <h1 className="form-header-title-premium mb-3">
-                <span className="title-gradient">Generate Service Ticket</span>
-              </h1>
-              <p className="form-header-subtitle-premium">Submit your complaint or service request and get a unique ticket number instantly.</p>
-            </div>
-            
-            {/* Progress Steps */}
-            <div className="progress-steps-wrapper mb-5">
-              <div className="progress-steps">
-                {[1, 2, 3, 4].map((step) => (
-                  <div key={step} className="step-item">
-                    <button
-                      className={`step-indicator ${currentStep >= step ? 'active' : ''} ${currentStep > step ? 'success' : ''}`}
-                      onClick={() => goToStep(step)}
-                      disabled={currentStep <= step}
-                    >
-                      {currentStep > step ? (
-                        <CheckCircle size={24} />
-                      ) : (
-                        <span>{step}</span>
-                      )}
-                    </button>
-                    <div className="step-label">
-                      <div className="step-title">
-                        {step === 1 && 'Contact Info'}
-                        {step === 2 && 'Service Details'}
-                        {step === 3 && 'Problem Description'}
-                        {step === 4 && 'Address & Submit'}
+                {/* Quick Stats */}
+                <div className="mt-5 pt-4 border-top border-white-20">
+                  <Row className="g-3">
+                    <Col xs={6} md={3}>
+                      <div className="text-center">
+                        <div className="text-white fw-bold display-6">5min</div>
+                        <div className="text-white-50 small">Avg Response</div>
                       </div>
-                      <div className="step-subtitle">
-                        {step === 1 && 'Your personal details'}
-                        {step === 2 && 'Select service & priority'}
-                        {step === 3 && 'Describe the issue'}
-                        {step === 4 && 'Service location'}
+                    </Col>
+                    <Col xs={6} md={3}>
+                      <div className="text-center">
+                        <div className="text-white fw-bold display-6">98%</div>
+                        <div className="text-white-50 small">Satisfaction</div>
+                      </div>
+                    </Col>
+                    <Col xs={6} md={3}>
+                      <div className="text-center">
+                        <div className="text-white fw-bold display-6">24/7</div>
+                        <div className="text-white-50 small">Available</div>
+                      </div>
+                    </Col>
+                    <Col xs={6} md={3}>
+                      <div className="text-center">
+                        <div className="text-white fw-bold display-6">1000+</div>
+                        <div className="text-white-50 small">Tickets Daily</div>
+                      </div>
+                    </Col>
+                  </Row>
+                </div>
+              </div>
+            </Col>
+
+            <Col lg={6} className="py-5">
+              <div className="animate-slideInLeft h-100 d-flex align-items-center">
+                <Card className="glass-effect border-0 shadow-2xl">
+                  <Card.Body className="p-5">
+                    <div className="text-center mb-4">
+                      <div className="d-inline-flex align-items-center justify-content-center stat-icon mb-3">
+                        <Ticket size={48} />
+                      </div>
+                      <h3 className="fw-bold text-white mb-3">Quick Service Request</h3>
+                      <Badge bg="info" className="mb-3">
+                        Fast Response Guaranteed
+                      </Badge>
+                    </div>
+
+                    <p className="text-center text-white mb-4">
+                      Our streamlined ticket system ensures your service requests are handled
+                      efficiently with complete transparency and real-time updates.
+                    </p>
+
+                    <div className="d-flex justify-content-center gap-4 mb-4">
+                      <div className="text-center">
+                        <div className="fw-bold text-warning display-6">5min</div>
+                        <div className="text-white-50 small">Avg Response</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="fw-bold text-success display-6">98%</div>
+                        <div className="text-white-50 small">Satisfaction</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="fw-bold text-info display-6">24/7</div>
+                        <div className="text-white-50 small">Available</div>
                       </div>
                     </div>
-                    {step < 4 && <div className={`progress-line ${currentStep > step ? 'active' : ''}`}></div>}
+
+                    <div className="text-center">
+                      <Button variant="light" size="sm" onClick={() => document.getElementById('ticket-form').scrollIntoView({ behavior: 'smooth' })}>
+                        <Send className="me-2" size={16} />
+                        Start Your Request
+                      </Button>
+                    </div>
+                  </Card.Body>
+                </Card>
+              </div>
+            </Col>
+          </Row>
+
+          {/* Floating Elements */}
+          <div className="position-absolute animate-float" style={{
+            top: '10%',
+            right: '5%',
+            width: '6rem',
+            height: '6rem',
+            background: 'rgba(59, 130, 246, 0.2)',
+            borderRadius: '50%',
+            filter: 'blur(1.5rem)'
+          }} />
+          <div className="position-absolute animate-float" style={{
+            bottom: '15%',
+            left: '5%',
+            width: '4rem',
+            height: '4rem',
+            background: 'rgba(139, 92, 246, 0.2)',
+            borderRadius: '50%',
+            filter: 'blur(1rem)',
+            animationDelay: '1s'
+          }} />
+          <div className="position-absolute animate-float" style={{
+            top: '60%',
+            right: '10%',
+            width: '3rem',
+            height: '3rem',
+            background: 'rgba(16, 185, 129, 0.2)',
+            borderRadius: '50%',
+            filter: 'blur(0.8rem)',
+            animationDelay: '2s'
+          }} />
+        </Container>
+      </section>
+
+      {/* Ticket Form Section */}
+      <section className="py-5 bg-light position-relative overflow-hidden" id="ticket-form">
+        <div className="position-absolute top-0 start-0 w-100 h-100" style={{
+          background: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Cdefs%3E%3Cpattern id=\'dots\' width=\'30\' height=\'30\' patternUnits=\'userSpaceOnUse\'%3E%3Ccircle cx=\'15\' cy=\'15\' r=\'2\' fill=\'rgba(10, 102, 194, 0.1)\'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width=\'100\' height=\'100\' fill=\'url(%23dots)\'/%3E%3C/svg%3E")',
+          opacity: 0.8
+        }} />
+        
+        <Container className="position-relative z-2">
+          <div className="text-center mb-5">
+            <Badge bg="primary" className="mb-3 px-4 py-2 fs-6 fw-bold">
+              <Ticket className="me-2" size={18} />
+              Generate Service Ticket
+            </Badge>
+            <h2 className="display-4 fw-bold mb-4">
+              Submit Your <span className="text-primary">Service Request</span>
+            </h2>
+            <p className="lead text-muted mb-0">
+              Fill out the form below and get instant ticket generation with real-time tracking.
+            </p>
+          </div>
+                
+          <div className="row justify-content-center">
+            <div className="col-md-8">
+              <Card className="shadow-sm">
+                <Card.Body className="p-4">
+              {/* Progress Steps */}
+              <div className="d-flex justify-content-between mb-4">
+                {[1, 2, 3, 4].map((step) => (
+                  <div key={step} className="text-center">
+                    <div className={`rounded-circle d-inline-flex align-items-center justify-content-center mb-2 ${
+                      currentStep === step ? 'bg-primary text-white' : 
+                      currentStep > step ? 'bg-success text-white' : 'bg-light text-muted'
+                    }`} style={{width: '40px', height: '40px'}}>
+                      {currentStep > step ? <CheckCircle size={20} /> : step}
+                    </div>
+                    <small className="d-block">
+                      {step === 1 && 'Contact'}
+                      {step === 2 && 'Service'}
+                      {step === 3 && 'Details'}
+                      {step === 4 && 'Address'}
+                    </small>
                   </div>
                 ))}
               </div>
-            </div>
-            
-            {/* Premium Form Card */}
-            <div className="form-card-premium">
-              <div className="form-body">
-                <div className="form-header-decoration"></div>
-                
-                {/* Draft Indicator */}
-                {isDraft && (
-                  <div className="draft-indicator mb-4">
-                    <FileText size={16} className="me-2" />
-                    <span>Draft auto-saved</span>
-                  </div>
-                )}
-                
-                <Alert type="success" message={success} />
-                <Alert type="error" message={error} />
-                {loading && <Loader text="Submitting ticket..." />}
-                
-                <form onSubmit={handleSubmit} className="form-premium">
-                  {/* Step 1: Contact Information */}
-                  {currentStep === 1 && (
-                    <div className="step-content">
-                      <div className="step-header mb-4">
-                        <h3 className="step-title">Contact Information</h3>
-                        <p className="step-description">Please provide your contact details so we can reach you regarding your service request.</p>
-                      </div>
-                      
-                      <div className="form-row">
-                        <div className="form-group-premium">
-                          <label className="form-label-premium">
-                            <User size={20} className="label-icon" />
-                            Full Name
-                            <span className="required-star">*</span>
-                          </label>
-                          <div className="input-wrapper-enhanced">
-                            <input 
-                              type="text" 
-                              name="fullName" 
-                              value={formData.fullName} 
-                              onChange={handleChange} 
-                              placeholder="Enter your full name" 
-                              className={`form-input-premium ${formErrors.fullName ? 'error' : ''} ${formData.fullName ? 'has-value' : ''}`}
-                              required 
-                            />
-                            <div className="input-icon-right">
-                              {formData.fullName && <CheckCircle size={16} className="text-success" />}
-                            </div>
-                            {formErrors.fullName && (
-                              <div className="error-message-enhanced">
-                                <AlertCircle size={16} className="me-1" />
-                                <span>{formErrors.fullName}</span>
-                              </div>
-                            )}
-                            <div className="input-focus-border"></div>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      <div className="form-row">
-                        <div className="form-group-premium">
-                          <label className="form-label-premium">
-                            <Phone size={20} className="label-icon" />
-                            Mobile Number
-                            <span className="required-star">*</span>
-                          </label>
-                          <div className="input-wrapper-enhanced">
-                            <input 
-                              type="tel" 
-                              name="mobileNumber" 
-                              value={formData.mobileNumber} 
-                              onChange={handleChange} 
-                              placeholder="10-digit mobile number" 
-                              className={`form-input-premium ${formErrors.mobileNumber ? 'error' : ''} ${formData.mobileNumber ? 'has-value' : ''}`}
-                              maxLength={10}
-                              required 
-                            />
-                            <div className="input-icon-right">
-                              {formData.mobileNumber && <CheckCircle size={16} className="text-success" />}
-                            </div>
-                            {formErrors.mobileNumber && (
-                              <div className="error-message-enhanced">
-                                <AlertCircle size={16} className="me-1" />
-                                <span>{formErrors.mobileNumber}</span>
-                              </div>
-                            )}
-                            <div className="input-focus-border"></div>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      <div className="form-row">
-                        <div className="form-group-premium">
-                          <label className="form-label-premium">
-                            <Mail size={20} className="label-icon" />
-                            Email Address
-                            <span className="required-star">*</span>
-                          </label>
-                          <div className="input-wrapper-enhanced">
-                            <input 
-                              type="email" 
-                              name="email" 
-                              value={formData.email} 
-                              onChange={handleChange} 
-                              placeholder="your.email@example.com" 
-                              className={`form-input-premium ${formErrors.email ? 'error' : ''} ${formData.email ? 'has-value' : ''}`}
-                              required 
-                            />
-                            <div className="input-icon-right">
-                              {formData.email && <CheckCircle size={16} className="text-success" />}
-                            </div>
-                            {formErrors.email && (
-                              <div className="error-message-enhanced">
-                                <AlertCircle size={16} className="me-1" />
-                                <span>{formErrors.email}</span>
-                              </div>
-                            )}
-                            <div className="input-focus-border"></div>
-                          </div>
-                        </div>
-                      </div>
+
+              {isDraft && (
+                <div className="alert alert-info d-flex align-items-center mb-3">
+                  <FileText size={16} className="me-2" />
+                  Draft auto-saved
+                </div>
+              )}
+
+              <Alert type="success" message={success} />
+              <Alert type="error" message={error} />
+              {loading && <Loader text="Submitting ticket..." />}
+                  <form onSubmit={handleSubmit}>
+                {/* Step 1: Contact Information */}
+                {currentStep === 1 && (
+                  <div>
+                    <h4 className="mb-3">Contact Information</h4>
+                    <div className="mb-3">
+                      <label className="form-label">Full Name *</label>
+                      <input 
+                        type="text" 
+                        name="fullName" 
+                        value={formData.fullName} 
+                        onChange={handleChange} 
+                        className={`form-control ${formErrors.fullName ? 'is-invalid' : ''}`}
+                        placeholder="Enter your full name" 
+                        required 
+                      />
+                      {formErrors.fullName && <div className="invalid-feedback">{formErrors.fullName}</div>}
                     </div>
-                  )}
-                  
-                  {/* Step 2: Service Details */}
-                  {currentStep === 2 && (
-                    <div className="step-content">
-                      <div className="step-header mb-4">
-                        <h3 className="step-title">Service Details</h3>
-                        <p className="step-description">Select the type of service you need and the priority level.</p>
-                      </div>
-                      
-                      <div className="form-row">
-                        <div className="form-group-premium">
-                          <label className="form-label-premium">
-                            <Shield size={20} className="label-icon" />
-                            Service Type
-                            <span className="required-star">*</span>
-                          </label>
-                          <div className="service-types-enhanced">
-                            {serviceTypes.map((service) => {
-                              const Icon = service.icon;
-                              return (
-                                <div
-                                  key={service.id}
-                                  className={`service-card-premium ${formData.serviceType === service.id ? 'selected' : ''} ${formData.serviceType === service.id ? 'card-selected' : ''}`}
-                                  onClick={() => handleServiceTypeSelect(service.id)}
-                                >
-                                  <div className="service-header">
-                                    <div className="service-icon-premium" style={{ background: service.color }}>
-                                      <Icon size={28} className="text-white" />
-                                    </div>
-                                    <div className="service-badge">{service.icon}</div>
-                                  </div>
-                                  <div className="service-body">
-                                    <h5 className="service-title">{service.name}</h5>
-                                    <p className="service-description">{service.description}</p>
-                                    <div className="service-arrow">
-                                      {formData.serviceType === service.id && <CheckCircle size={16} className="text-white" />}
-                                      {formData.serviceType !== service.id && <ChevronRight size={16} />}
-                                    </div>
-                                  </div>
-                                </div>
-                              );
-                            })}
-                          </div>
-                          {formErrors.serviceType && (
-                            <div className="error-message-enhanced">
-                              <AlertCircle size={16} className="me-1" />
-                              <span>{formErrors.serviceType}</span>
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                      
-                      <div className="form-row">
-                        <div className="form-group-premium">
-                          <label className="form-label-premium">
-                            <Zap size={20} className="label-icon" />
-                            Priority Level
-                            <span className="required-star">*</span>
-                          </label>
-                          <div className="priority-enhanced">
-                            {priorityLevels.map((priority) => {
-                              const Icon = priority.icon;
-                              return (
-                                <div
-                                  key={priority.id}
-                                  className={`priority-card-enhanced ${formData.priority === priority.id ? 'selected' : ''} ${formData.priority === priority.id ? 'priority-selected' : ''}`}
-                                  onClick={() => handlePrioritySelect(priority.id)}
-                                >
-                                  <div className="priority-header">
-                                    <div className="priority-icon-enhanced" style={{ color: priority.color, borderColor: priority.color }}>
-                                      <Icon size={24} />
-                                    </div>
-                                    <div className="priority-badge">{priority.icon}</div>
-                                  </div>
-                                  <div className="priority-body">
-                                    <h6 className="priority-name">{priority.name}</h6>
-                                    <div className="priority-time" style={{ color: priority.color }}>
-                                      <Clock size={14} className="me-1" />
-                                      <span>{priority.time}</span>
-                                    </div>
-                                    <p className="priority-description">{priority.description}</p>
-                                  </div>
-                                  <div className="priority-selection">
-                                    {formData.priority === priority.id && <CheckCircle size={20} className="text-white" />}
-                                  </div>
-                                </div>
-                              );
-                            })}
-                          </div>
-                          {formData.estimatedResolution && (
-                            <div className="estimated-resolution-enhanced">
-                              <AlertCircle size={18} className="me-2 text-info" />
-                              <span>Estimated resolution time: <strong>{formData.estimatedResolution}</strong></span>
-                            </div>
-                          )}
-                        </div>
-                      </div>
+                    <div className="mb-3">
+                      <label className="form-label">Mobile Number *</label>
+                      <input 
+                        type="tel" 
+                        name="mobileNumber" 
+                        value={formData.mobileNumber} 
+                        onChange={handleChange} 
+                        className={`form-control ${formErrors.mobileNumber ? 'is-invalid' : ''}`}
+                        placeholder="10-digit mobile number" 
+                        maxLength={10}
+                        required 
+                      />
+                      {formErrors.mobileNumber && <div className="invalid-feedback">{formErrors.mobileNumber}</div>}
                     </div>
-                  )}
-                  
-                  {/* Step 3: Problem Description */}
-                  {currentStep === 3 && (
-                    <div className="step-content">
-                      <div className="step-header mb-4">
-                        <h3 className="step-title">Problem Description</h3>
-                        <p className="step-description">Please describe your issue in detail and attach any relevant files.</p>
-                      </div>
-                      
-                      <div className="form-row">
-                        <div className="form-group-premium full-width">
-                          <label className="form-label-premium">
-                            <MessageSquare size={20} className="label-icon" />
-                            Problem Description
-                            <span className="required-star">*</span>
-                            <span className="character-count">
-                              {formData.problemDescription.length}/1000
-                            </span>
-                          </label>
-                          <div className="textarea-wrapper-enhanced">
-                            <textarea 
-                              name="problemDescription" 
-                              value={formData.problemDescription} 
-                              onChange={handleChange} 
-                              placeholder="Describe your issue in detail... (minimum 20 characters)" 
-                              rows={6} 
-                              className={`form-textarea-premium ${formErrors.problemDescription ? 'error' : ''} ${formData.problemDescription ? 'has-value' : ''}`}
-                              required 
-                            />
-                            <div className="textarea-footer">
-                              <div className="character-indicator">
-                                <div className="indicator-bar">
-                                  <div className="indicator-fill" style={{ width: `${(formData.problemDescription.length / 1000) * 100}%` }}></div>
-                                </div>
-                                <span>{formData.problemDescription.length}/1000</span>
-                              </div>
-                              {formData.problemDescription && <CheckCircle size={16} className="text-success" />}
-                            </div>
-                            {formErrors.problemDescription && (
-                              <div className="error-message-enhanced">
-                                <AlertCircle size={16} className="me-1" />
-                                <span>{formErrors.problemDescription}</span>
-                              </div>
-                            )}
-                            <div className="input-focus-border"></div>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      <div className="form-row">
-                        <div className="form-group-premium full-width">
-                          <label className="form-label-premium">
-                            <Paperclip size={20} className="label-icon" />
-                            Attachments (Optional)
-                            <span className="attachment-count">
-                              {formData.attachments.length > 0 && `(${formData.attachments.length})`}
-                            </span>
-                          </label>
-                          <div 
-                            className={`file-upload-area-enhanced ${dragActive ? 'drag-active' : ''} ${formData.attachments.length > 0 ? 'has-files' : ''}`}
-                            onDragEnter={handleDrag}
-                            onDragLeave={handleDrag}
-                            onDragOver={handleDrag}
-                            onDrop={handleDrop}
-                            onClick={() => fileInputRef.current?.click()}
-                          >
-                            <input
-                              ref={fileInputRef}
-                              type="file"
-                              multiple
-                              accept="image/*,.pdf,.doc,.docx"
-                              onChange={(e) => handleFileUpload(e.target.files)}
-                              style={{ display: 'none' }}
-                            />
-                            <div className="upload-content">
-                              <Upload size={48} className="upload-icon" />
-                              <div className="upload-text">
-                                <p className="upload-title">Drag & drop files here or <span className="upload-link">browse</span></p>
-                                <p className="upload-subtitle">Supported: Images, PDF, Documents (Max 5MB per file)</p>
-                              </div>
-                              {formData.attachments.length === 0 && (
-                                <div className="upload-placeholder">
-                                  <div className="placeholder-icon">📁</div>
-                                  <div className="placeholder-text">No files uploaded yet</div>
-                                </div>
-                              )}
-                            </div>
-                          </div>
-                          
-                          {formData.attachments.length > 0 && (
-                            <div className="attachments-list-enhanced">
-                              {formData.attachments.map((file, index) => (
-                                <div key={index} className="attachment-item-enhanced">
-                                  <div className="attachment-icon-wrapper">
-                                    <FileText size={20} className="attachment-icon" />
-                                  </div>
-                                  <div className="attachment-info">
-                                    <div className="attachment-name">{file.name}</div>
-                                    <div className="attachment-details">
-                                      <span className="attachment-size">{(file.size / 1024 / 1024).toFixed(2)} MB</span>
-                                      <button
-                                        type="button"
-                                        className="remove-attachment-enhanced"
-                                        onClick={() => removeFile(index)}
-                                      >
-                                        <X size={14} />
-                                      </button>
-                                    </div>
-                                  </div>
-                                </div>
-                              ))}
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                  
-                  {/* Step 4: Address & Submit */}
-                  {currentStep === 4 && (
-                    <div className="step-content">
-                      <div className="step-header mb-4">
-                        <h3 className="step-title">Service Address</h3>
-                        <p className="step-description">Provide the complete address where the service needs to be provided.</p>
-                      </div>
-                      
-                      <div className="form-row">
-                        <div className="form-group-premium full-width">
-                          <label className="form-label-premium">
-                            <MapPin size={20} className="label-icon" />
-                            Service Address
-                            <span className="required-star">*</span>
-                          </label>
-                          <div className="textarea-wrapper-enhanced">
-                            <textarea 
-                              name="address" 
-                              value={formData.address} 
-                              onChange={handleChange} 
-                              placeholder="Enter your complete address with landmark, city, state, and pincode..." 
-                              rows={5} 
-                              className={`form-textarea-premium ${formErrors.address ? 'error' : ''} ${formData.address ? 'has-value' : ''}`}
-                              required 
-                            />
-                            <div className="textarea-footer">
-                              <div className="address-indicator">
-                                {formData.address && <CheckCircle size={16} className="text-success" />}
-                                {!formData.address && <MapPin size={16} className="text-muted" />}
-                              </div>
-                              <span className="character-count">{formData.address.length}/200</span>
-                            </div>
-                            {formErrors.address && (
-                              <div className="error-message-enhanced">
-                                <AlertCircle size={16} className="me-1" />
-                                <span>{formErrors.address}</span>
-                              </div>
-                            )}
-                            <div className="input-focus-border"></div>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      {/* Summary Section */}
-                      <div className="summary-section">
-                        <h4 className="summary-title">Ticket Summary</h4>
-                        <div className="summary-grid">
-                          <div className="summary-item">
-                            <span className="summary-label">Name:</span>
-                            <span className="summary-value">{formData.fullName}</span>
-                          </div>
-                          <div className="summary-item">
-                            <span className="summary-label">Mobile:</span>
-                            <span className="summary-value">{formData.mobileNumber}</span>
-                          </div>
-                          <div className="summary-item">
-                            <span className="summary-label">Email:</span>
-                            <span className="summary-value">{formData.email}</span>
-                          </div>
-                          <div className="summary-item">
-                            <span className="summary-label">Service:</span>
-                            <span className="summary-value">
-                              {serviceTypes.find(s => s.id === formData.serviceType)?.name}
-                            </span>
-                          </div>
-                          <div className="summary-item">
-                            <span className="summary-label">Priority:</span>
-                            <span className="summary-value">{formData.priority}</span>
-                          </div>
-                          <div className="summary-item">
-                            <span className="summary-label">Est. Time:</span>
-                            <span className="summary-value">{formData.estimatedResolution}</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                  
-                  {/* Navigation Buttons */}
-                  <div className="form-navigation">
-                    <div className="nav-buttons">
-                      {currentStep > 1 && (
-                        <button type="button" className="btn-nav-prev" onClick={prevStep}>
-                          <ChevronLeft size={20} className="me-2" />
-                          Previous
-                        </button>
-                      )}
-                      
-                      {currentStep < totalSteps ? (
-                        <button type="button" className="btn-nav-next" onClick={nextStep}>
-                          Next
-                          <ChevronRight size={20} className="ms-2" />
-                        </button>
-                      ) : (
-                        <button type="submit" className="form-submit-premium" disabled={loading}>
-                          <span className="button-content">
-                            <Send size={22} className="me-2" />
-                            <span className="button-text">{loading ? 'Submitting...' : 'Submit Ticket'}</span>
-                          </span>
-                          <div className="button-glow"></div>
-                          <div className="button-particles">
-                            <div className="particle particle-1"></div>
-                            <div className="particle particle-2"></div>
-                            <div className="particle particle-3"></div>
-                            <div className="particle particle-4"></div>
-                          </div>
-                        </button>
-                      )}
-                    </div>
-                  </div>
-                </form>
-                
-                {ticketNumber && (
-                  <div className="success-message-premium">
-                    <div className="success-animation">
-                      <div className="success-icon-wrapper">
-                        <CheckCircle size={32} className="text-white" />
-                      </div>
-                      <div className="success-content">
-                        <h4 className="success-title">🎉 Ticket Generated Successfully!</h4>
-                        <div className="ticket-number-display">
-                          <span className="ticket-label">Your Ticket Number:</span>
-                          <span className="ticket-number">{ticketNumber}</span>
-                        </div>
-                        <p className="success-description">Track your service request here: <Link to="/ticket-status" className="success-link">Check Ticket Status</Link></p>
-                      </div>
+                    <div className="mb-3">
+                      <label className="form-label">Email Address *</label>
+                      <input 
+                        type="email" 
+                        name="email" 
+                        value={formData.email} 
+                        onChange={handleChange} 
+                        className={`form-control ${formErrors.email ? 'is-invalid' : ''}`}
+                        placeholder="your.email@example.com" 
+                        required 
+                      />
+                      {formErrors.email && <div className="invalid-feedback">{formErrors.email}</div>}
                     </div>
                   </div>
                 )}
-              </div>
-            </div>
-          </div>
+                
+                {/* Step 2: Service Details */}
+                {currentStep === 2 && (
+                  <div>
+                    <h4 className="mb-3">Service Details</h4>
+                    <div className="mb-3">
+                      <label className="form-label">Service Type *</label>
+                      <div className="row">
+                        {serviceTypes.map((service) => {
+                          const Icon = service.icon;
+                          return (
+                            <div key={service.id} className="col-md-6 mb-2">
+                              <div
+                                className={`card p-3 cursor-pointer ${formData.serviceType === service.id ? 'border-primary bg-light' : ''}`}
+                                onClick={() => handleServiceTypeSelect(service.id)}
+                              >
+                                <div className="d-flex align-items-center">
+                                  <Icon size={20} className="me-2" style={{ color: service.color }} />
+                                  <div>
+                                    <h6 className="mb-0">{service.name}</h6>
+                                    <small className="text-muted">{service.description}</small>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                      {formErrors.serviceType && <div className="text-danger small">{formErrors.serviceType}</div>}
+                    </div>
+                                      </div>
+                )}
+                
+                {/* Step 3: Problem Description */}
+                {currentStep === 3 && (
+                  <div>
+                    <h4 className="mb-3">Problem Description</h4>
+                    <div className="mb-3">
+                      <label className="form-label">Describe your issue *</label>
+                      <textarea 
+                        name="problemDescription" 
+                        value={formData.problemDescription} 
+                        onChange={handleChange} 
+                        className={`form-control ${formErrors.problemDescription ? 'is-invalid' : ''}`}
+                        placeholder="Describe your issue in detail (minimum 20 characters)..." 
+                        rows={5} 
+                        required 
+                      />
+                      {formErrors.problemDescription && <div className="invalid-feedback">{formErrors.problemDescription}</div>}
+                      <small className="text-muted">{formData.problemDescription.length}/1000</small>
+                    </div>
+                  </div>
+                )}
+                
+                {/* Step 4: Address */}
+                {currentStep === 4 && (
+                  <div>
+                    <h4 className="mb-3">Service Address</h4>
+                    <div className="mb-3">
+                      <label className="form-label">Complete Address *</label>
+                      <textarea 
+                        name="address" 
+                        value={formData.address} 
+                        onChange={handleChange} 
+                        className={`form-control ${formErrors.address ? 'is-invalid' : ''}`}
+                        placeholder="Enter your complete address with landmark, city, state, and pincode..." 
+                        rows={4} 
+                        required 
+                      />
+                      {formErrors.address && <div className="invalid-feedback">{formErrors.address}</div>}
+                    </div>
+                    
+                    <div className="alert alert-info">
+                      <h6>Summary:</h6>
+                      <p className="mb-1"><strong>Name:</strong> {formData.fullName}</p>
+                      <p className="mb-1"><strong>Mobile:</strong> {formData.mobileNumber}</p>
+                      <p className="mb-1"><strong>Service:</strong> {serviceTypes.find(s => s.id === formData.serviceType)?.name}</p>
+                      <p className="mb-0"><strong>Address:</strong> {formData.address}</p>
+                    </div>
+                  </div>
+                )}
+                
+                {/* Navigation Buttons */}
+                <div className="d-flex justify-content-between mt-4">
+                  {currentStep > 1 && (
+                    <button type="button" className="btn btn-secondary" onClick={prevStep}>
+                      Previous
+                    </button>
+                  )}
+                  
+                  {currentStep < totalSteps ? (
+                    <button type="button" className="btn btn-primary ms-auto" onClick={nextStep}>
+                      Next
+                    </button>
+                  ) : (
+                    <button type="submit" className="btn btn-success ms-auto" disabled={loading}>
+                      {loading ? 'Submitting...' : 'Submit Ticket'}
+                    </button>
+                  )}
+                </div>
+              </form>
+              
+              {ticketNumber && (
+                <div className="alert alert-success mt-3">
+                  <h5>🎉 Ticket Generated Successfully!</h5>
+                  <p><strong>Your Ticket Number:</strong> {ticketNumber}</p>
+                  <p>Track your service request here: <Link to="/ticket-status">Check Ticket Status</Link></p>
+                </div>
+              )}
+            </Card.Body>
+          </Card>
         </div>
-      </section>
+      </div>
+    </Container>
+    </section>
     </>
   );
 };
