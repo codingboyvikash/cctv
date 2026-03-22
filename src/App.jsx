@@ -2,7 +2,6 @@ import { Routes, Route } from 'react-router-dom';
 import MainLayout from './layouts/MainLayout.jsx';
 import AdminLayout from './layouts/AdminLayout.jsx';
 import HomePage from './pages/public/HomePage.jsx';
-import AboutPage from './pages/public/AboutPage.jsx';
 import ServicesPage from './pages/public/ServicesPage.jsx';
 import TicketPage from './pages/public/TicketPage.jsx';
 import TicketStatusPage from './pages/public/TicketStatusPage.jsx';
@@ -11,6 +10,7 @@ import AdminLoginPage from './pages/admin/AdminLoginPage.jsx';
 import DashboardPage from './pages/admin/DashboardPage.jsx';
 import TicketDetailsPage from './pages/admin/TicketDetailsPage.jsx';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
+import AboutPage from './pages/public/AboutPage.jsx';
 
 function App() {
   return (
