@@ -1,5 +1,6 @@
 import { Phone, MessageCircle } from 'lucide-react';
 import { companyInfo } from '../data/siteData';
+import { FaWhatsapp } from 'react-icons/fa';
 
 const FloatingButtons = () => {
   return (
@@ -14,7 +15,7 @@ const FloatingButtons = () => {
           animationDelay: '1s'
         }}
       >
-        <MessageCircle size={24} />
+        <FaWhatsapp size={24} />
         <span 
           className="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-success p-2"
           style={{ fontSize: '0.5rem' }}

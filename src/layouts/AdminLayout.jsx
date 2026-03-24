@@ -12,14 +12,14 @@ const AdminLayout = () => {
 
   return (
     <div className="admin-layout">
-      <aside className="admin-sidebar">
+      {/* <aside className="admin-sidebar">
         <h2>Admin Panel</h2>
         <p>{adminAuth?.admin?.name}</p>
         <NavLink to="/admin/dashboard">Dashboard</NavLink>
         <button className="btn btn-outline" onClick={handleLogout}>
           Logout
         </button>
-      </aside>
+      </aside> */}
       <section className="admin-content">
         <Outlet />
       </section>

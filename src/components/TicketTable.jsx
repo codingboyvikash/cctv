@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 const TicketTable = ({ tickets }) => {
   return (
     <div className="table-wrap">
-      <table className="ticket-table">
+      <table className="ticket-table w-100">
         <thead>
           <tr>
             <th>Ticket No.</th>
@@ -26,7 +26,7 @@ const TicketTable = ({ tickets }) => {
                 <td>{ticket.assignedTechnician || 'Unassigned'}</td>
                 <td>{new Date(ticket.createdAt).toLocaleDateString()}</td>
                 <td>
-                  <Link to={`/admin/tickets/${ticket._id}`} className="btn btn-sm">
+                  <Link to={`/admin/tickets/${ticket._id}`} className="btn btn-sm text-white bg-primary view_btn">
                     View
                   </Link>
                 </td>

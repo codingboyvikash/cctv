@@ -223,7 +223,7 @@ const TicketStatusPage = () => {
                   <Card.Header className="bg-success text-white">
                     <div className="d-flex align-items-center">
                       <CheckCircle size={24} className="me-2" />
-                      <h4 className="mb-0">Ticket Found</h4>
+                      <h4 className="mb-0 text-white">Ticket Found</h4>
                     </div>
                   </Card.Header>
                   <Card.Body className="p-4">

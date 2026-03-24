@@ -20,7 +20,7 @@ const Header = () => {
     <Navbar expand="lg" fixed="top" className="navbar">
       <Container>
         <Navbar.Brand as={NavLink} to="/" className="d-flex align-items-center gap-3">
-          <div className="d-flex align-items-center justify-content-center" style={{
+          <div className="d-flex align-items-center justify-content-center headerboxmenuIon" style={{
             width: '3rem',
             height: '3rem',
             background: 'var(--bs-gradient-primary)',
@@ -28,7 +28,7 @@ const Header = () => {
           }}>
             <Monitor className="text-white" size={24} />
           </div>
-          <span className="fw-bold">{companyInfo.name}</span>
+          <span className="fw-bold fontHeader">{companyInfo.name}</span>
         </Navbar.Brand>
 
         <Navbar.Toggle 
@@ -36,7 +36,7 @@ const Header = () => {
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="border-0 bg-transparent"
         >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {isMenuOpen ? <X size={24} color='white' /> : <Menu  size={24} color='white' />}
         </Navbar.Toggle>
 
         <Navbar.Collapse id="basic-navbar-nav">
