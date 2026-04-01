@@ -11,6 +11,7 @@ import AdminLoginPage from './pages/admin/AdminLoginPage.jsx';
 import DashboardPage from './pages/admin/DashboardPage.jsx';
 import TicketDetailsPage from './pages/admin/TicketDetailsPage.jsx';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
+import './styles/admin.css';
 
 function App() {
   return (
