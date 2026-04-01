@@ -56,7 +56,7 @@ const AdminLayout = () => {
             </div>
             <div>
               <span className="fw-bold d-block">Admin PORTAL</span>
-              <small className="text-muted">Admin Panel</small>
+              <small className="text-white">Admin Panel</small>
             </div>
           </div>
           <button 
@@ -76,7 +76,7 @@ const AdminLayout = () => {
               </div>
               <div>
                 <div className="fw-bold text-white">Admin User</div>
-                <small className="text-muted">System Administrator</small>
+                <small className="text-white">System Administrator</small>
               </div>
             </div>
             
@@ -96,7 +96,7 @@ const AdminLayout = () => {
         <nav className="sidebar-nav p-3">
           {/* MAIN MENU Section */}
           {sidebarOpen && (
-            <div className="text-muted small mb-3 fw-bold">MAIN MENU</div>
+            <div className="text-white small mb-3 fw-bold">MAIN MENU</div>
           )}
           
           <div className="mb-2">
@@ -180,7 +180,7 @@ const AdminLayout = () => {
 
           {/* SUPPORT Section */}
           {sidebarOpen && (
-            <div className="text-muted small mb-3 mt-4 fw-bold">SUPPORT</div>
+            <div className="text-white small mb-3 mt-4 fw-bold">SUPPORT</div>
           )}
           
           <div className="mb-2">
